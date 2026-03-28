@@ -9,55 +9,61 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Image.asset("assets/images/fundo.png"),
+          Positioned.fill(
+            child: Image.asset(
+              "assets/images/fundo.png",
+              fit: BoxFit.cover,
+            ),
           ),
-          
-          Padding(
-            padding: const EdgeInsets.all(32),
-          
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(
-                  "assets/images/fundo.png",
-                   width: 300,
-                  ),
-          
-                Column(
+          Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.85),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                padding: const EdgeInsets.all(24),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(
+                    Image.asset(
+                      "assets/images/fundo.png",
+                      width: 200,
+                    ),
+                    const SizedBox(height: 24),
+                    const Text(
                       "MUNDOFIT",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 30),
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 60,),
-                    
+                    const SizedBox(height: 30),
                     TextFormField(
-                      decoration: InputDecoration(
-                        label: Text("Email"))),
-                    
+                      decoration: const InputDecoration(labelText: "Email"),
+                    ),
+                    const SizedBox(height: 16),
                     TextFormField(
-                      decoration: InputDecoration(
-                        label: Text("Senha"))),
-                    SizedBox(height: 30,),
-                    
+                      obscureText: true,
+                      decoration: const InputDecoration(labelText: "Senha"),
+                    ),
+                    const SizedBox(height: 30),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, "home");},
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(Color(0xFFDB9A2A),
-                        ),
+                        Navigator.pushReplacementNamed(context, "home");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFDB9A2A),
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
                       ),
-                      child: Text("Entrar", 
-                        style: TextStyle(
-                          color: Colors.black)),
+                      child: const Text(
+                        "Entrar",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ],
